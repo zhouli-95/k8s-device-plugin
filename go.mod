@@ -3,6 +3,7 @@ module github.com/zhouli-95/k8s-device-plugin
 go 1.24.0
 
 require (
+	github.com/google/uuid v1.6.0
 	github.com/urfave/cli/v2 v2.27.7
 	google.golang.org/grpc v1.70.0
 	k8s.io/klog/v2 v2.130.1
@@ -17,7 +18,6 @@ require (
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/uuid v1.6.0
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/opencontainers/runtime-spec v1.1.0 // indirect
 	github.com/opencontainers/runtime-tools v0.9.1-0.20221107090550-2e043c6bd626 // indirect
