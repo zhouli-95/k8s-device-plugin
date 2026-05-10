@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dev-pod-1
+spec:
+  containers:
+  - name: app
+    image: ubuntu:24.04
+    command: ["bash", "-c", "sleep 3600"]
+    resources:
+      limits:
+        example.com/dev: "1"
+  terminationGracePeriodSeconds: 0

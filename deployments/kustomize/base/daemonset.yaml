@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: device-plugin
+spec:
+  selector:
+    matchLabels:
+      app: device-plugin
+  template:
+    metadata:
+      labels:
+        app: device-plugin
+    spec:
+      priorityClassName: "system-node-critical"
+      containers:
+      - name: device-plugin
+        image: device-plugin:dev
+        command: ["/device-plugin"]
+        volumeMounts:
+        - name: kubelet
+          mountPath:  /var/lib/kubelet/device-plugins
+        - name: cdi
+          mountPath: /var/run/cdi
+        - name: config
+          mountPath: /config
+          readOnly: true
+      volumes:
+      - name: kubelet
+        hostPath:
+          path: /var/lib/kubelet/device-plugins
+      - name: cdi
+        hostPath:
+          path: /var/run/cdi
+      - name: config
+        configMap:
+          name: device-config

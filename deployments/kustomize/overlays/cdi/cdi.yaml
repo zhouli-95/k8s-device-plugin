@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: device-plugin
+spec:
+  template:
+    spec:
+      containers:
+      - name: device-plugin
+        args: ["--device-strategy=cdi-annotation"]
+

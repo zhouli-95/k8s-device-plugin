@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: device-config
+data:
+  config.json: |
+    {
+      "domain": "test.io",
+      "resource": {
+        "name": "resource",
+        "controlDevices":
+        [
+          {
+            "containerPath": "/dev/control-device",
+            "hostPath": "/dev/null"
+          }
+        ],
+        "computeDevices":
+        [
+          {
+            "id": "device-000",
+            "containerPath": "/dev/compute-device001",
+            "hostPath": "/dev/null"
+          },
+          {
+            "id": "device-001",
+            "containerPath": "/dev/compute-device002",
+            "hostPath": "/dev/null"
+          },
+          {
+            "id": "device-002",
+            "containerPath": "/dev/compute-device003",
+            "hostPath": "/dev/null"
+          },
+          {
+            "id": "device-003",
+            "containerPath": "/dev/compute-device004",
+            "hostPath": "/dev/null"
+          }
+        ]
+      }
+    }
