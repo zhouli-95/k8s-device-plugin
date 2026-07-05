@@ -18,6 +18,7 @@ ARG GIT_COMMIT="unknown"
 
 LABEL name="Device Plugin"
 LABEL version=${VERSION}
+LABEL commit=${GIT_COMMIT}
 LABEL summary="Device plugin for Kubernetes"
 LABEL description="Device plugin for Kubernetes"
 

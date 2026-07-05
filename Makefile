@@ -7,7 +7,7 @@ DATE=`date -Iseconds`
 COMMIT?=`git rev-parse --verify HEAD`
 LDFLAGS="-X main.version=$(VERSION) -X main.commit=$(COMMIT) -X main.date=$(DATE)"
 
-GOPROXY := "https://goproxy.cn,direct"
+GOPROXY ?= "https://goproxy.cn,direct"
 
 all: build
 
@@ -21,6 +21,7 @@ docker:
 	@docker build . \
 	-f build/package/Dockerfile \
 	--build-arg VERSION=$(VERSION) \
+	--build-arg GIT_COMMIT=$(COMMIT) \
 	--build-arg GOPROXY=$(GOPROXY) \
 	-t $(APP_NAME):$(IMAGE_TAG)
 
@@ -57,8 +58,8 @@ cover:
 
 prepare:
 	@echo "prepare"
-	@go install github.com/onsi/ginkgo/v2/ginkgo
-	@go install sigs.k8s.io/kind
+	@go install github.com/onsi/ginkgo/v2/ginkgo@v2.27.5
+	@go install sigs.k8s.io/kind@v0.32.0
 
 e2e:
 	@echo "e2e test"
