@@ -7,3 +7,8 @@ resources:
   - namespace.yaml
   - configmap.yaml
   - daemonset.yaml
+
+images:
+  - name: device-plugin
+    newName: device-plugin
+    newTag: dev
